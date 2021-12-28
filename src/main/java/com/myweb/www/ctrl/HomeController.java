@@ -1,4 +1,4 @@
-package com.myweb.www;
+package com.myweb.www.ctrl;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -28,14 +28,12 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-		logger.info("?? {}", formattedDate);
-		String msg = "빈이는 정말 바보야.";
-		model.addAttribute("msg", msg);
-		model.addAttribute("serverTime", formattedDate);
 		
-		return "home";
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "index";
 	}
-
+	
 }
