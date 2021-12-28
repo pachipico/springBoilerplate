@@ -39,5 +39,5 @@
     </bean>  
     <tx:annotation-driven/>
     <task:annotation-driven/>
-    
+    <context:component-scan base-package="com.myweb.www.repository"/>
 </beans>
