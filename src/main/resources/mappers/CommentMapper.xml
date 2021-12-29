@@ -10,26 +10,22 @@
 		values(#{pno}, #{writer}, #{content})
 	</insert>
 
-	<select id="list" resultType="cvo">
+	<select id="list" parameterType="long" resultType="cvo">
 		select cno, writer, content,
 		mod_at, pno
 		from comment
+		where pno = #{pno}
+	</select>
+	
+	<select id="getPno" parameterType="long" resultType="long">
+		select pno from comment where cno = #{cno}
 	</select>
 
 	<update id="mod" parameterType="cvo">
 		update comment set content = #{content}, mod_at = now() where cno = #{cno}
 	</update>
 	
-	<update id="upCQ" parameterType="long">
-		update comment set cmt_qty = cmt_qty + 1 
-		where pno = #{pno}
-	</update>
 	
-	<update id="downCQ" parameterType="long">
-		update comment set cmt_qty = cmt_qty - 1
-		where pno = #{pno}
-	</update>
-
 	<delete id="del" parameterType="long">
 		delete from comment where cno =
 		#{cno}

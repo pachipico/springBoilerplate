@@ -26,18 +26,34 @@
 
 	<update id="mod" parameterType="pvo">
 		update product set
-		category = #{category}, 
+		category =
+		#{category},
 		pname = #{pname} ,
 		price = ${price},
 		description = #{description},
-		made_by = #{madeBy}, 
+		made_by =
+		#{madeBy},
 		mod_at = now()
 		where pno = #{pno}
 	</update>
-	
+
 	<update id="upRC" parameterType="long">
-		update product set read_count = read_count + 1 where pno = #{pno}
+		update product set read_count =
+		read_count + 1 where pno = #{pno}
 	</update>
+
+	<update id="upCQ" parameterType="long">
+		update product set cmt_qty =
+		cmt_qty + 1
+		where pno = #{pno}
+	</update>
+
+	<update id="downCQ" parameterType="long">
+		update product set cmt_qty =
+		cmt_qty - 1
+		where pno = #{pno}
+	</update>
+
 
 	<delete id="del" parameterType="long">
 		delete from product where pno =
