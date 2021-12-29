@@ -32,7 +32,7 @@ public class CommentTest {
 
 	@Test
 	public void getCommentList() throws Exception {
-		cdao.selectList();
+		cdao.selectList(1L);
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class CommentTest {
 		cvo.setCno(1);
 		cvo.setContent("modifiedTestContent");
 		cdao.update(cvo);
-		cdao.selectList();
+		cdao.selectList(1L);
 	}
 	
 	@Test

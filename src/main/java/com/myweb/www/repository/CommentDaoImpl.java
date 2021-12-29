@@ -24,11 +24,14 @@ public class CommentDaoImpl implements CommentDAO {
 		return sql.insert(NS + "reg", cvo);
 	}
 
-	
+	@Override
+	public List<CommentVO> selectList(long pno) {
+		return sql.selectList(NS+"list", pno);
+	}
 
 	@Override
-	public List<CommentVO> selectList() {
-		return sql.selectList(NS+"list");
+	public long selectOne(long cno) {
+		return sql.selectOne(NS+"getPno", cno);
 	}
 
 	@Override
@@ -45,4 +48,7 @@ public class CommentDaoImpl implements CommentDAO {
 	public int deleteAll(long pno) {
 		return sql.delete(NS+"delAll", pno);
 	}
+
+
+
 }

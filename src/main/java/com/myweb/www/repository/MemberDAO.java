@@ -10,6 +10,6 @@ public interface MemberDAO {
 	List<MemberVO> selectList(); //list
 	MemberVO selectOne(String email); //detail
 	int update(MemberVO mvo); //modify
-	int delete(String email); //delete
 	int update(String email); //last login
+	int delete(String email); //delete
 }
