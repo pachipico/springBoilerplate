@@ -43,7 +43,7 @@ public class ProductTest {
 			pvo.setCategory("A" + i);
 			pvo.setPname("testName" + i);
 			pvo.setPrice(10000);
-			pvo.setWriter("testWriter"+ i);
+			pvo.setWriter("test"+ i+"@test.com");
 			pvo.setMadeBy("testMadeBy" + i);
 			pvo.setDescription("test description" + i);
 			pdao.insert(pvo);

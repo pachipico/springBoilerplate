@@ -33,5 +33,15 @@ public class CommentTest {
 			}
 		}
 	}
+	
+	@Test
+	public void getCommentList() {
+		csv.getList(70L);
+	}
+	
+	@Test
+	public void removeComment() {
+		csv.remove(239L);
+	}
 
 }
