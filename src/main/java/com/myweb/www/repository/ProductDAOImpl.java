@@ -38,9 +38,24 @@ public class ProductDAOImpl implements ProductDAO {
 	public int update(ProductVO pvo) {
 		return sql.update(NS + "mod", pvo);
 	}
+	@Override
+	public int updateRC(long pno) {
+		return sql.update(NS+ "upRC", pno);
+	}
+	
+	@Override
+	public int updateCQ(long pno) {
+		return sql.update(NS+"upCQ", pno);
+	}
+	
+	@Override
+	public int updateDWCQ(long pno) {
+		return sql.update(NS+ "downCQ", pno);
+	}
 
 	@Override
 	public int delete(long pno) {
 		return sql.delete(NS + "del", pno);
 	}
+
 }

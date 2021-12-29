@@ -9,11 +9,11 @@
 	</insert>
 
 	<select id="login" parameterType="mvo" resultType="mvo">
-		select email,nick_name, last_login, grade from member where email = #{email}, pwd = #{pwd}
+		select email,nick_name, last_login, grade from member where email = #{email} and pwd = #{pwd}
 	</select>
 	
 	<select id="list" resultType="mvo">
-		select email, nick_name, reg_at, mod_at, grade 
+		select email, nick_name, reg_at, last_login, grade 
 		from member
 	</select>
 	
@@ -31,7 +31,7 @@
 	</update>
 	
 	<delete id="del" parameterType="string">
-		delete member where email = #{email}
+		delete from member where email = #{email}
 	</delete>
 
 

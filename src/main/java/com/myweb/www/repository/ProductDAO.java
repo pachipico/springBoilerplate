@@ -11,6 +11,9 @@ public interface ProductDAO {
 	int insert(ProductVO pvo);
 	List<ProductVO> selectList();
 	ProductVO selectOne(long pno);
+	int updateRC(long pno);
+	int updateCQ(long pno);
+	int updateDWCQ(long pno);
 	int update(ProductVO pvo);
 	int delete(long pno);
 }

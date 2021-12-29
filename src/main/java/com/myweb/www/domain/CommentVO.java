@@ -11,7 +11,7 @@ public class CommentVO {
 	public CommentVO() {
 	}
 	//instert: pno, writer, content
-	//list: cno, writer, content, modAt
+	//list: cno, writer, content, modAt, pno
 	//update: cno, pno, content
 	//delete: cno	
 	

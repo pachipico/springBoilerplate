@@ -5,31 +5,43 @@
 <mapper namespace="ProductMapper">
 
 	<insert id="reg" parameterType="pvo">
-		insert into product( category, pname ,price, writer, description) 
-		values(#{category}, #{pname}, #{price}, ${writer}, ${description})
+		insert into product( category,
+		pname ,price, writer,made_by, description)
+		values(#{category},
+		#{pname}, #{price}, #{writer},#{madeBy}, #{description})
 	</insert>
 
 
-	
+
 	<select id="list" resultType="pvo">
-		select pno, category, pname, price, read_count, cnt_qty
+		select pno, category, pname, price,
+		read_count, cmt_qty
 		from product
 	</select>
-	
+
 	<select id="detail" parameterType="long" resultType="pvo">
-		select * from product where pno = #{pno}
+		select *
+		from product where pno = #{pno}
 	</select>
 
 	<update id="mod" parameterType="pvo">
 		update product set
-		category = #{category}, pname = #{pname} ,
-		price = ${price}, description = #{description}, 
-		made_by = #{madeBy}
+		category = #{category}, 
+		pname = #{pname} ,
+		price = ${price},
+		description = #{description},
+		made_by = #{madeBy}, 
+		mod_at = now()
 		where pno = #{pno}
 	</update>
 	
+	<update id="upRC" parameterType="long">
+		update product set read_count = read_count + 1 where pno = #{pno}
+	</update>
+
 	<delete id="del" parameterType="long">
-		delete from product where pno = #{pno}
+		delete from product where pno =
+		#{pno}
 	</delete>
 
 
