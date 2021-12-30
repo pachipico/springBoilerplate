@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -9,7 +8,7 @@
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-      <h2>Register form</h2>
+      <h2>Register Product</h2>
       <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     </div>
 
@@ -65,37 +64,43 @@
       <div class="col-md-7 col-lg-8">
       
         <h4 class="mb-3">Input your information</h4>
-        <form  method="post" action="/member/register">
+        <form  method="post" action="/product/register">
           <div class="row g-3">
           
 
             <div class="col-12">
-              <label for="email" class="form-label">Email</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
-              
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="nickName" class="form-label">Nick Name</label>
-              <input type="nickName" class="form-control" id="nickName" name="nickName" placeholder="NickName" required>
+              <label for="category" class="form-label">Category</label>
+              <input type="text" class="form-control" id="category" name="category" placeholder="Category" required>
               
             </div>
 			
-			  <div class="col-sm-6">
-              <label for="pwd" class="form-label">Password</label>
-              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="" value="" required>
+			<div class="col-12">
+              <label for="pname" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="pname" name="pname" placeholder="Product Name" required>
+              
+            </div>           
+            <div class="col-12">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Price" required>
+              
+            </div>           
+            <div class="col-12">
+              <label for="writer" class="form-label">Writer</label>
+              <input type="text" class="form-control" id="writer" name="writer" value="${ses.email }"  readonly>
+              
             </div>
-
-            <div class="col-sm-6">
-              <label for="rpwd" class="form-label">Check Password</label>
-              <input type="password" class="form-control" id="rpwd" placeholder="" value="" required>
+			<div class="col-12">
+              <label for="madeBy" class="form-label">Made By</label>
+              <input type="text" class="form-control" id="madeBy" name="madeBy" placeholder="Made By" required>
+              
+            </div>           
+            <div class="col-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea id="description" class="form-control" name="description"></textarea>
+              
             </div>
-
-
-            <div class="col-md-5">
+			
+            <!-- <div class="col-md-5">
               <label for="country" class="form-label">Country</label>
               <select class="form-select" id="country" >
                 <option value="">Choose...</option>
@@ -124,7 +129,7 @@
                 Zip code required.
               </div>
             </div>
-          </div>
+          </div> -->
           
 
           <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Continue to Register</button>

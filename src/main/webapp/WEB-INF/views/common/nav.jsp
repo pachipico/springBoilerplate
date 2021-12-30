@@ -10,9 +10,11 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/product/list" class="nav-link px-2 text-white">Products</a></li>
+          <c:if test="${!empty ses }">
+          	<li><a href="/product/register" class="nav-link px-2 text-white">Register</a></li>
+          </c:if>
           <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
@@ -22,8 +24,24 @@
         </form>
 
         <div class="text-end">
-          <a href="/member/login"  class="btn btn-outline-light me-2">Login</a>
-          <a href="/member/signup" class="btn btn-warning">Sign-up</a>
+        <c:choose>
+			<c:when test="${empty ses }">
+		          <a href="/member/login"  class="btn btn-outline-light me-2">Login</a>
+		          <a href="/member/register" class="btn btn-warning">Sign-up</a>
+			  	
+			</c:when>        
+			<c:otherwise>
+			  <c:choose>
+			  	<c:when test="${ses.grade ge 50 }">
+			  	<a href="/member/list"  class="btn btn-outline-light me-2">Member List</a>
+			  	</c:when>
+			  	<c:otherwise>
+				<a href="/member/detail?email=${ses.email }"  class="btn btn-outline-light me-2">${ses.nickName}(${ses.email })</a>
+			  	</c:otherwise>
+			  </c:choose>
+				<a href="/member/logout" class="btn btn-warning">Log-Out</a>		
+			</c:otherwise>
+        </c:choose>
         </div>
       </div>
     </div>

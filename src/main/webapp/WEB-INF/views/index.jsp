@@ -23,7 +23,24 @@
 
 </div>
 
-
+<script type="text/javascript">
+let isUp = '<c:out value="${isUp}" />';
+let isLogin = '<c:out value="${isLogin}" />';
+let isLogout = '<c:out value="${isLogout}" />';
+let isDel = '<c:out value="${isDel}" />';
+if(parseInt(isUp)){
+	alert("회원가입 성공");
+}
+if(parseInt(isLogin)){
+	alert("로그인 성공");
+}
+if(parseInt(isLogout)){
+	alert("로그아웃 성공");
+}
+if(parseInt(isDel)){
+	alert("회원 탈퇴 성공");
+}
+</script>
 
 
 

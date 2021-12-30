@@ -23,6 +23,8 @@ public class CommentTest {
 	@Test
 	public void registerComment() throws Exception {
 		CommentVO cvo = new CommentVO();
+		
+		
 		cvo.setPno(1);
 		cvo.setWriter("testWriter");
 		cvo.setContent("testContent");

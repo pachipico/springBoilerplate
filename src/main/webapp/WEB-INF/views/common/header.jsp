@@ -40,6 +40,7 @@
 <!-- Custom styles for this template -->
 <link href="/resources/dist/css/headers.css" rel="stylesheet">
 <link href="/resources/dist/css/footers.css" rel="stylesheet">
+<link href="/resources/dist/css/features.css" rel="stylesheet">
 </head>
 <body>
 <script src="/resources/dist/js/bootstrap.bundle.min.js"></script>
