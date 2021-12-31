@@ -52,6 +52,14 @@ public class ProductController {
 		model.addAttribute("pvo", psv.getDetail(pno));
 	}
 	
+	@PostMapping("remove")
+	public String remove(@RequestParam("pno") Long pno, RedirectAttributes reAttr) {
+		int isDel = psv.remove(pno);
+		reAttr.addFlashAttribute("isDel", isDel);
+		logger.debug("remove : {}", isDel);
+		return "redirect:/product/list";
+	}
+	
 	
 	
 }

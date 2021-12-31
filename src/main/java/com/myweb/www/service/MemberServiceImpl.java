@@ -51,4 +51,15 @@ public class MemberServiceImpl implements MemberService {
 	public int remove(String email) {
 		return mdao.delete(email);
 	}
+
+	@Override
+	public int dupleCheck(String email) {
+		return mdao.selectExist(email);
+	}
+
+	@Override
+	public int updateGrade(MemberVO mvo) {
+		
+		return mdao.updateGrade(mvo);
+	}
 }

@@ -20,10 +20,18 @@
 	<select id="detail" parameterType="string" resultType="mvo">
 		select * from member where email = #{email}
 	</select>
+	
+	<select id="duple" parameterType="string" resultType="int">
+		select count(email) cnt from member where email = #{email}
+	</select>
 
 	<update id="mod" parameterType="mvo">
 		update member set pwd = #{pwd}, nick_name = #{nickName}, grade = #{grade}
 		where email = #{email}
+	</update>
+	
+	<update id="modGrade" parameterType="mvo" >
+		update member set grade = #{grade} where email = #{email}
 	</update>
 	
 	<update id="last" parameterType="string">

@@ -74,13 +74,13 @@
               <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
                 <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
-              
+             	<button type="button" class="btn btn-success" id="dupleCheck">중복 확인</button>
               </div>
             </div>
 
             <div class="col-12">
               <label for="nickName" class="form-label">Nick Name</label>
-              <input type="nickName" class="form-control" id="nickName" name="nickName" placeholder="NickName" required>
+              <input type="text" class="form-control" id="nickName" name="nickName" placeholder="NickName" required>
               
             </div>
 			
@@ -127,12 +127,12 @@
           </div>
           
 
-          <button class="w-100 btn btn-primary btn-lg my-4" type="submit">Continue to Register</button>
+          <button class="w-100 btn btn-primary btn-lg my-4" id="regBtn" type="submit" disabled >Continue to Register</button>
         </form>
       </div>
     </div>
   </main>
 
 </div>
-
+<script src="/resources/js/member.register.js"></script>
 <jsp:include page="../common/footer.jsp" />

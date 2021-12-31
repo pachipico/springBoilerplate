@@ -12,4 +12,6 @@ public interface MemberDAO {
 	int update(MemberVO mvo); //modify
 	int update(String email); //last login
 	int delete(String email); //delete
+	int selectExist(String email);
+	int updateGrade(MemberVO mvo);
 }

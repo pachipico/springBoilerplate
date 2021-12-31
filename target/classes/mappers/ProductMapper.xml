@@ -17,6 +17,7 @@
 		select pno, category, pname, price,
 		read_count, cmt_qty
 		from product
+		order by pno desc
 	</select>
 
 	<select id="detail" parameterType="long" resultType="pvo">

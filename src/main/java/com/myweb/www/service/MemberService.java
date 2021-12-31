@@ -14,4 +14,6 @@ public interface MemberService {
 	MemberVO getDetail(String email);
 	int modify(MemberVO mvo);
 	int remove(String email);
+	int dupleCheck(String email);
+	int updateGrade(MemberVO mvo);
 }

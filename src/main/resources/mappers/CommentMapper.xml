@@ -32,7 +32,7 @@
 	</delete>
 
 	<delete id="delAll" parameterType="long">
-		delete comment where pno = #{pno}
+		delete from comment where pno = #{pno}
 	</delete>
 	
 </mapper>

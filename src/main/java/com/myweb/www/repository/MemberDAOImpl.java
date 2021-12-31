@@ -42,6 +42,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
+	public int selectExist(String email) {
+		return sql.selectOne(NS + "duple", email);
+	}
+
+	@Override
 	public int update(MemberVO mvo) {
 		return sql.update(NS + "mod", mvo);
 	}
@@ -55,4 +60,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public int update(String email) {
 		return sql.update(NS + "last", email);
 	}
+
+	@Override
+	public int updateGrade(MemberVO mvo) {
+
+		return sql.update(NS + "modGrade", mvo);
+	}
+
 }
