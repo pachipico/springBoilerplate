@@ -22,6 +22,7 @@
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Product information</h4>
         <form action="/product/modify" method="post">
+        <input type="hidden" name="ses" value="${ses.email }">
         <input type="hidden" name="pno" value="${pvo.pno }">
           <div class="row g-3">
 
@@ -103,12 +104,14 @@
         </div>
         </form>
       </div>
+      <c:if test="${not empty ses.email }">
       <div id="cmtForm">
       		<input type="hidden" name="pno" value="${pvo.pno }">
       		<input type="hidden" name="writer" value="${ses.email }">
       		<textarea class="form-control" id="cmtContent" name="content"></textarea>
       		<button type="button" id="cmtAddBtn" class="btn btn-sm btn-primary my-2">add comment</button>
       </div>
+      </c:if>
             	<table class="table">
   <thead>
     <tr>
@@ -119,17 +122,7 @@
     </tr>
   </thead>
   <tbody id="cmtContainer">
-  <!-- list를 가져올것인지 자바스크립트로 뿌릴 것인지? -->
-    <tr>
-      <th scope="row">abc</th>
-      <td>2021-12-31 21:32</td>
-      <td>i like this!</td>
-      <td>
-      <button id="cmtEditBtn" class="btn btn-sm btn-outline-warning">edit</button>
-      <button id="cmtDelBtn" class="btn btn-sm btn-outline-danger">delete</button>
-</td>
-    </tr>
-    
+
   </tbody>
 </table>
       
