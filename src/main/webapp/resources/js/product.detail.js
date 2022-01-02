@@ -18,11 +18,10 @@ const showCommentList = async (list) => {
     if (ses == comment.writer) {
       comments += ` 
       <tr>
-        <th scope="row">${comment.writer}</th>
-        <td>${comment.modAt}</td>
-        <td id="content">${comment.content}</td>
-        <td>
-        
+      <th scope="row">${comment.writer}</th>
+      <td>${comment.modAt}</td>
+      <td id="content">${comment.content}</td>
+      <td>
           <button id="cmtEditBtn" data-cno="${comment.cno}" class="btn btn-sm btn-outline-warning">edit</button>
           <button id="cmtDelBtn" data-cno="${comment.cno}" class="btn btn-sm btn-outline-danger">delete</button>
         </td>
@@ -31,6 +30,7 @@ const showCommentList = async (list) => {
     } else {
       comments += ` 
       <tr>
+
         <th scope="row">${comment.writer}</th>
         <td>${comment.modAt}</td>
         <td>${comment.content}</td>
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   getCommentList(document.querySelector("input[name=pno]").value).then((list) => showCommentList(list));
 });
 
-document.addEventListener("click", (e) => {
+document.addEventListener("mousedown", (e) => {
   if (e.target.id == "modBtn") {
     e.preventDefault();
     modBtn.innerText = "Submit";
@@ -151,12 +151,30 @@ document.addEventListener("click", (e) => {
   }
   if (e.target.id == "cmtEditBtn") {
     const content = e.target.closest("tr").querySelector("#content").innerHTML;
-    e.target
-      .closest("tr")
-      .querySelector("#content").innerHTML = `<input type="text" name="content" value="${content}"/>`;
-    e.target.innerHTML = "submit";
-    e.target.id = "cmtEditSbm";
-    e.target.setAttribute("type", "submit");
+    e.target.closest("tr").querySelector("#content").innerHTML = `
+      <input type="text" name="content" value="${content}"/>
+      `;
+    const cmtEditSbm = document.createElement("button");
+    cmtEditSbm.setAttribute("id", "cmtEditSbm");
+    cmtEditSbm.innerText = "Submit";
+    cmtEditSbm.dataset.cno = e.target.dataset.cno;
+    cmtEditSbm.classList.add("btn", "btn-outline-primary", "btn-sm");
+    e.target.parentNode.replaceChild(cmtEditSbm, e.target);
     //어떻게 처리할지?
+  }
+  if (e.target.id == "cmtEditSbm") {
+    const content = e.target.closest("tr").querySelector("input").value;
+    const edit = document.createElement("button");
+    edit.setAttribute("id", "edit");
+    edit.innerText = "edit";
+    edit.dataset.cno = e.target.dataset.cno;
+    edit.classList.add("btn", "btn-outline-warning", "btn-sm");
+    modifyCmt(e.target.dataset.cno, content).then((result) => {
+      console.log(result);
+      if (result) {
+        renderComment(document.querySelector("input[name=pno]").value);
+      }
+    });
+    // e.target.parentNode.replaceChild(edit, e.target);
   }
 });
