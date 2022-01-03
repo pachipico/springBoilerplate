@@ -104,7 +104,55 @@
         </div>
         </form>
       </div>
-      <c:if test="${not empty ses.email }">
+      <c:if test="${not empty ses }">
+      <div class="input-group">
+      	  <span class="input-group-text" id="cmtWriter">${ses.email }</span>
+		  <input type="text" class="form-control" id="cmtText">
+		  
+		  <button class="btn btn-outline-primary" id="cmtPostBtn" type="button">Add Comment</button>
+		</div>
+      </c:if>
+		<!-- <table id="cmtList">
+			
+		</table> -->
+		<ul class="list-group list-group-flush " id="cmtListArea">
+  			<li class="list-group-item d-flex justify-content-between align-items-center">
+  			  <div class="ms-2 me-auto">
+    		  <div class="fw-bold">writer</div>
+   			   Content for list item
+ 		      </div>
+    		  <span class="badge bg-primary rounded-pill">modAt</span>
+  			</li>
+  		</ul>
+  		<!-- The Modal -->
+		<div class="modal" id="myModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">${ses.email }</h4>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		      	 <div class="input-group">
+		      	 	 
+			 		 <input type="text" class="form-control" id="cmtModText">
+					 <button class="btn btn-outline-primary" id="cmtModBtn" type="button">Modify Comment</button>
+				</div>
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-danger" id="modalClose" data-bs-dismiss="modal">Close</button>
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+    <%--   <c:if test="${not empty ses.email }">
       <div id="cmtForm">
       		<input type="hidden" name="pno" value="${pvo.pno }">
       		<input type="hidden" name="writer" value="${ses.email }">
@@ -124,7 +172,7 @@
   <tbody id="cmtContainer">
 
   </tbody>
-</table>
+</table> --%>
       
     </div>
   </main>
@@ -132,11 +180,18 @@
 <form action="/product/remove" method="post" id="delForm">
 	<input type="hidden" name="pno" value="${pvo.pno }">
 </form>
+
+<script type="text/javascript">
+const pnoVal = document.querySelector("input[name=pno]").value;
+const ses = '<c:out value="${ses.email}"/>'
+</script>
 <script src="/resources/js/product.detail.js"></script>
+<script src="/resources/js/product.comment.js"></script>
 <script>
 let isMod = '<c:out value="${isMod}"/>';
 if (parseInt(isMod)) {
 	alert('상품 수정 성공~');
 }
+getCommentList(pnoVal);
 </script>
 <jsp:include page="../common/footer.jsp" />
